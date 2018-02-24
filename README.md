@@ -1,27 +1,20 @@
-# crypto-portfolio-tracker
+# sesopenko/crypto-value
 
-> A crypto currency portfolio tracker project
+This is an open source, crypto value calculator.  You can use it for free at [http://crypto-value.s3-website-us-east-1.amazonaws.com](http://crypto-value.s3-website-us-east-1.amazonaws.com)
 
-## Build Setup
+## Features
 
-``` bash
-# install dependencies
-npm install
+* Enter crypto currency holdings
+* Save holdings to HTML5 local storage, in your own browser.  Your holdings completely private to your browser.
+* Fetches & displays USD value of your holdings
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Installation
 
-# build for production with minification
-npm run build
+1. `yarn # installs dependencies`
+2. `yarn run test # runs unit tests`
+3. `yarn run build # builds files in /dist directory`
+4. `yarn run serve # serves a dev build which auto-updates when changed.`
 
-# build for production and view the bundle analyzer report
-npm run build --report
+## License
 
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+This software is licensed GPL-v3, the details of which is included in [LICENSE.txt.](LICENSE.txt)
