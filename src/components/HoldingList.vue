@@ -1,12 +1,18 @@
 <template>
-  <div class="c-holdings">
+  <table class="c-holdings">
+    <tr>
+      <th class="list-header">Name</th>
+      <th class="list-header">Qty</th>
+      <th class="list-header">USD Value</th>
+      <th class="list-header">&nbsp;</th>
+    </tr>
     <Holding
       v-for="(holding, index) in holdings"
       :key="index"
       :name="holding.name"
       :value="holding.value"
     />
-  </div>
+  </table>
 </template>
 
 <script lang="ts">

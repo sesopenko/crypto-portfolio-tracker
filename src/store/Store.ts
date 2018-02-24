@@ -21,6 +21,14 @@ export default new Vuex.Store({
     tickers: [],
   },
   mutations: {
+    deleteHolding(state: IStoreState, holdingName: string) {
+      const holdingIndex = findIndex(state.holdings, (comparison: IHolding) => {
+        return comparison.name === holdingName;
+      });
+      if (holdingIndex !== -1) {
+        state.holdings.splice(holdingIndex, 1);
+      }
+    },
     setHolding(state: IStoreState, holding: IHolding) {
       const isZeroValue = (holding.value === 0);
       if (isZeroValue) {
@@ -54,6 +62,9 @@ export default new Vuex.Store({
   actions: {
     addHolding({ commit }, holding: IHolding) {
       commit('setHolding', holding);
+    },
+    deleteHolding({ commit }, holdingName: string) {
+      commit('deleteHolding', holdingName);
     },
   },
 });

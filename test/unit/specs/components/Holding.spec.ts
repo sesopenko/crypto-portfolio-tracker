@@ -11,7 +11,7 @@ describe('Holding.vue', () => {
 
   beforeEach(() => {
     actions = {
-      addHolding: jasmine.createSpy(),
+      deleteHolding: jasmine.createSpy(),
     };
     store = new Vuex.Store({
       actions,
@@ -31,5 +31,21 @@ describe('Holding.vue', () => {
     });
     expect(wrapper.find('[data-test-holding-name]').text()).toContain(expectedName);
     expect(wrapper.find('[data-test-holding-value]').text()).toContain('2.457');
+  });
+
+  it('Deletes the holding when the delete button is pressed', () => {
+    const expectedName = 'bitcoin';
+    const expectedValue = 2.457;
+
+    const wrapper = shallow(Holding, {
+      store,
+      localVue,
+      propsData: {
+        name: expectedName,
+        value: expectedValue,
+      },
+    });
+    wrapper.find('[data-test-delete-button]').trigger('click');
+    expect(actions.deleteHolding).toHaveBeenCalled()));
   });
 });

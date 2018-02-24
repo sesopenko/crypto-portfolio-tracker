@@ -1,15 +1,37 @@
 <template>
-  <div class="c-holding">
-    <div data-test-holding-name>
-      Name: {{ name }}
-    </div>
-    <div data-test-holding-value>
-      Qty: {{ value }}
-    </div>
-    <div v-if="usdValue">
-      Holdings: {{ usdValue }}
-    </div>
-  </div>
+  <tr class="c-holding">
+    <td
+      class="holding-data"
+      data-test-holding-name
+    >
+      {{ name }}
+    </td>
+    <td
+      class="holding-data holding-data--monetary"
+      data-test-holding-value
+    >
+      {{ formattedValue }}
+    </td>
+    <td
+      class="holding-data holding-data--monetary"
+      data-test-holding-usd-value
+    >
+      <template v-if="usdValue">
+        {{ usdValue }}
+      </template>
+    </td>
+    <td
+      class="holding-data"
+      data-test-holding-actions
+    >
+      <button
+        data-test-delete-button
+        @click.prevent="deleteHolding"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
 </template>
 
 <script lang="ts">
@@ -36,6 +58,12 @@ export default Vue.extend({
       ));
       return ticker;
     },
+    formattedValue(): string {
+      return this.value.toLocaleString('en', {
+        style: 'decimal',
+        minimumFractionDigits: 10,
+      });
+    },
     usdValue(): string|null {
       if (this.ticker) {
         const usdValue = this.ticker.priceUsd * this.value;
@@ -47,11 +75,23 @@ export default Vue.extend({
       return null;
     },
   },
+  methods: {
+    deleteHolding() {
+      this.$store.dispatch('deleteHolding', this.name);
+    },
+  },
 });
 </script>
 
 <style scoped>
-.c-holding {
+.holding-data {
   padding: 10px;
+  text-align: left;
+}
+.holding-data--monetary {
+  text-align: right;
+}
+.c-holding:nth-child(even) {
+  background-color: #efefef;
 }
 </style>
