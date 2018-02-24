@@ -9,5 +9,11 @@
       "src/*"
     ]
   },
-  "moduleResolution": "node"
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "types": [
+      "vue-typescript-import-dts",
+      "jasmine"
+    ],
+  }
 }
