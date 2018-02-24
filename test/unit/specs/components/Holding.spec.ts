@@ -46,6 +46,6 @@ describe('Holding.vue', () => {
       },
     });
     wrapper.find('[data-test-delete-button]').trigger('click');
-    expect(actions.deleteHolding).toHaveBeenCalled()));
+    expect(actions.deleteHolding).toHaveBeenCalled();
   });
 });
