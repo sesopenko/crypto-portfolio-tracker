@@ -5,3 +5,15 @@ install: yarn install
 script:
 - yarn unit
 - yarn build
+deploy:
+  provider: s3
+  skip_cleanup: true
+  access_key_id: AKIAIZPUTT2QS2CAQW3Q
+  secret_access_key:
+    secure: IlrpohO8n5x5NxDtFE/z21Ftye+7zSDvUV6OEUnlwKP3OO51RC6fXCzFfwlrwRpT1aHN/oXHW/vBAXtMJM9wtgRDvCLklzk+93iFuM4OSHGFxbfSviDN2ofQfgRbeTQzYpDuqKjDuLsJbXuVhSSpifuVrE4PswZOEy0FAkupA+WM6KyqkHHIMuRglCGd1LgOFEsYzTtx1cCF2YhdLj5dVD1uqsad8Uws++dO1nfrSC/91hNcUFxnF6CJM6B0yHybGqzn34GysG+J5XyOLt+qOfdxwEN2pjmJyJtOIw5rPcHJqAu0NQff4Kzo59nWewA12VhCr/+M6OrIPPg0CIvImHulrQwEFvMI0mCdBtySJo/wJXEdPv3XM3KcRj8vd+ArQVLRrwSXGbrudhV3dN1VtUm1NAeir2N5DT/rYqeuy03bbfOjvbXgE61tlI1sVnyj1Ac+I6d7/2cBv4YhzdbtUZoTVT9D+0r3287i5qBmyKULu+MKuEyvQ/alPXnGrbTUkWMqMNtnzNFOTwa7A0k+lZuTs5it4SFZBnmQ+7qurN+8FHVSI/t9WCqTaWiqHEGKJuch06DX4taSSMASo9/XLrXEUQ7jzsx0SD9YHtyUgHnY7vRNEmR/z++/wQwCjH5FG14+LHlLljqSyUruiD+ciAtvCAd41Jq2vXrmyf6lAT0=
+  bucket: crypto-portfolio-tracker
+  local-dir: dist
+  acl: 'public_read'
+  on:
+    branch: master
+    repo: sesopenko/crypto-portfolio-tracker
