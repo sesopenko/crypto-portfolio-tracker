@@ -1,5 +1,7 @@
 # sesopenko/crypto-portfolio-tracker
 
+[![Build Status](https://travis-ci.org/sesopenko/crypto-portfolio-tracker.svg?branch=master)](https://travis-ci.org/sesopenko/crypto-portfolio-tracker)
+
 This is an open source, crypto value calculator.  You can use it for free at [http://crypto-portfolio-tracker.s3-website-us-east-1.amazonaws.com/](http://crypto-portfolio-tracker.s3-website-us-east-1.amazonaws.com/)
 
 ## Features
