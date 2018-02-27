@@ -1,7 +1,15 @@
 <template>
   <div class="home">
     <HoldingCreator/>
-    <HoldingList/>
+    <HoldingList
+      v-if="hasHoldings"
+    />
+    <div
+      v-else
+      class="add-holding-instructions"
+    >
+      Enter the details above then click "Add Crypto Holding" to add your first holding.
+    </div>
   </div>
 </template>
 
@@ -16,5 +24,14 @@ export default Vue.extend({
     HoldingCreator,
     HoldingList,
   },
+  computed: {
+    hasHoldings() {
+      return this.$store.state.holdings.length > 0;
+    }
+  }
 });
 </script>
+
+<style scoped>
+
+</style>

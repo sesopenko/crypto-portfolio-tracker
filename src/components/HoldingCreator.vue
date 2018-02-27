@@ -1,22 +1,25 @@
 <template>
   <div class="c-holding-creator">
+    <h2>
+      Add a crypto:
+    </h2>
     <form @submit.prevent="addHolding">
       <label>
-        Crypto Name:
+        Name:
         <input
           v-model="name"
           type="text"
         >
       </label>
       <label>
-        Crypto Location:
+        Where is it stored?:
         <input
           v-model="location"
           type="text"
         >
       </label>
       <label>
-        Crypto Value:
+        Quantity Held:
         <input
           v-model="value"
           type="number"
@@ -25,7 +28,7 @@
       <input
         type="submit"
         data-test-add
-        value="Add Holding"
+        value="Add Crypto Holding"
         @click.prevent="addHolding"
       >
     </form>
@@ -62,4 +65,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.c-holding-creator {
+  text-align: left;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+}
 </style>
