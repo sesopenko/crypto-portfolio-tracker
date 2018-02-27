@@ -15,6 +15,7 @@
       :location="holding.location"
       :uuid="holding.uuid"
     />
+    <HoldingTotal/>
   </table>
 </template>
 
@@ -23,11 +24,13 @@ import Vue from 'vue';
 import { IHolding } from '@/types.ts';
 
 import Holding from '@/components/Holding';
+import HoldingTotal from '@/components/HoldingTotal';
 
 export default Vue.extend({
   name: 'HoldingList',
   components: {
     Holding,
+    HoldingTotal,
   },
   computed: {
     holdings(): IHolding[] {

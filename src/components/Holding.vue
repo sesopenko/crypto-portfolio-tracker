@@ -104,6 +104,7 @@ export default Vue.extend({
 }
 .holding-data--monetary {
   text-align: right;
+  font-family: monospace;
 }
 .c-holding:nth-child(even) {
   background-color: #efefef;
