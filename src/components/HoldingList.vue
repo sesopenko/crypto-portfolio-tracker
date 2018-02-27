@@ -4,7 +4,7 @@
       <th class="list-header">Name</th>
       <th class="list-header">Location</th>
       <th class="list-header">Qty</th>
-      <th class="list-header">USD Value</th>
+      <th class="list-header">CAD Value</th>
       <th class="list-header">&nbsp;</th>
     </tr>
     <Holding
