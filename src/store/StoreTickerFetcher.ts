@@ -11,7 +11,7 @@ export default (store: any) => {
       const existingTickerNames = map(state.tickers, 'name');
       const missingTickerNames = difference(holdingNames, existingTickerNames);
       missingTickerNames.forEach((tickerName) => {
-        const coinMarketCapUrl = `https://api.coinmarketcap.com/v1/ticker/${tickerName}/`;
+        const coinMarketCapUrl = `https://api.coinmarketcap.com/v1/ticker/${tickerName}/?convert=CAD`;
         const corsProxyUrl = `https://cors-anywhere.herokuapp.com/${coinMarketCapUrl}`;
         fetch(coinMarketCapUrl).then((response) => {
           if (!response.ok) {
@@ -23,7 +23,7 @@ export default (store: any) => {
               name: tickerName,
               symbol: tickerData.symbol,
               priceBtc: parseFloat(tickerData.price_btc),
-              priceUsd: parseFloat(tickerData.price_usd),
+              priceCad: parseFloat(tickerData.price_cad),
             };
             store.commit('setTicker', ticker);
           });

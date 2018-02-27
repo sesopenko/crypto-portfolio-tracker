@@ -5,7 +5,7 @@
       colspan="4"
       class="grand-total"
     >
-      {{ usdTotal }}
+      {{ grandTotal }}
     </td>
     <td>&nbsp;</td>
   </tr>
@@ -18,7 +18,7 @@ import { IHolding, ITicker } from '@/types.ts';
 export default Vue.extend({
   name: 'HoldingTotal',
   computed: {
-    usdTotal(): string {
+    grandTotal(): string {
       let grandTotal = 0;
       this.$store.state.holdings.forEach((holding: IHolding) => {
         // find a ticker
@@ -27,12 +27,12 @@ export default Vue.extend({
           return isTicker;
         });
         if (foundTicker) {
-          grandTotal += holding.value * foundTicker.priceUsd;
+          grandTotal += holding.value * foundTicker.priceCad;
         }
       });
       return grandTotal.toLocaleString('en', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'CAD',
       });
     },
   },

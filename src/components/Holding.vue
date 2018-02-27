@@ -20,10 +20,10 @@
     </td>
     <td
       class="holding-data holding-data--monetary"
-      data-test-holding-usd-value
+      data-test-holding-cad-value
     >
-      <template v-if="usdValue">
-        {{ usdValue }}
+      <template v-if="cadValue">
+        {{ cadValue }}
       </template>
     </td>
     <td
@@ -78,12 +78,12 @@ export default Vue.extend({
         minimumFractionDigits: 10,
       });
     },
-    usdValue(): string|null {
+    cadValue(): string|null {
       if (this.ticker) {
-        const usdValue = this.ticker.priceUsd * this.value;
-        return usdValue.toLocaleString('en', {
+        const cadValue = this.ticker.priceCad * this.value;
+        return cadValue.toLocaleString('en', {
           style: 'currency',
-          currency: 'USD',
+          currency: 'CAD',
         });
       }
       return null;

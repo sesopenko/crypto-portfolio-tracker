@@ -15,7 +15,7 @@ export interface ITicker {
   name: string;
   symbol: string;
   priceBtc: number;
-  priceUsd: number;
+  priceCad: number;
 }
 
 export interface IStoreState {

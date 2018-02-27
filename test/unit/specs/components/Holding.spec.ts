@@ -14,6 +14,10 @@ describe('Holding.vue', () => {
       deleteHolding: jasmine.createSpy(),
     };
     store = new Vuex.Store({
+      state: {
+        holdings: [],
+        tickers: [],
+      },
       actions,
     });
   });
