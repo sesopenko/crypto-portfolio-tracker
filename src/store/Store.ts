@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { IHolding, IHoldingCreation, IStoreState, ITicker } from '@/types';
 import { remove, findIndex } from 'lodash';
-
-
-import { IHolding, IStoreState, ITicker } from '@/types';
 
 import StoreLocalStorage from '@/store/StoreLocalStorage';
 import StoreTickerFetcher from '@/store/StoreTickerFetcher';
@@ -21,9 +19,10 @@ export default new Vuex.Store({
     tickers: [],
   },
   mutations: {
-    deleteHolding(state: IStoreState, holdingName: string) {
+    deleteHolding(state: IStoreState, uuid: string) {
+      console.log('deleting holding:', uuid);
       const holdingIndex = findIndex(state.holdings, (comparison: IHolding) => {
-        return comparison.name === holdingName;
+        return comparison.uuid === uuid;
       });
       if (holdingIndex !== -1) {
         state.holdings.splice(holdingIndex, 1);
@@ -31,20 +30,8 @@ export default new Vuex.Store({
     },
     setHolding(state: IStoreState, holding: IHolding) {
       const isZeroValue = (holding.value === 0);
-      if (isZeroValue) {
-        const holdingIndex = findIndex(state.holdings, (comparison: IHolding) => {
-          return comparison.name === holding.name;
-        });
-        if (holdingIndex !== -1) {
-          state.holdings.splice(holdingIndex, 1);
-        }
-      } else {
-        const existingIndex = findIndex(state.holdings, ['name', holding.name]);
-        if (existingIndex === -1) {
-          state.holdings.push(holding);
-        } else {
-          state.holdings[existingIndex].value = holding.value;
-        }
+      if (!isZeroValue) {
+        state.holdings.push(holding);
       }
     },
     setAllHoldings(state: IStoreState, holdings: IHolding[]) {
@@ -60,11 +47,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    addHolding({ commit }, holding: IHolding) {
-      commit('setHolding', holding);
+    addHolding({ commit }, holding: IHoldingCreation) {
+      const mtime = Date.now();
+      const uuid = `${holding.name}-${holding.location}-${mtime}`;
+      commit('setHolding', {
+        name: holding.name,
+        value: holding.value,
+        location: holding.location,
+        uuid,
+      });
     },
-    deleteHolding({ commit }, holdingName: string) {
-      commit('deleteHolding', holdingName);
+    deleteHolding({ commit }, uuid: string) {
+      commit('deleteHolding', uuid);
     },
   },
 });

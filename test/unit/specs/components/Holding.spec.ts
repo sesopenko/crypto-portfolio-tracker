@@ -20,6 +20,8 @@ describe('Holding.vue', () => {
   it('Renders the provided details', () => {
     const expectedName = 'bitcoin';
     const expectedValue = 2.457;
+    const expectedLocation = 'test1';
+    const expectedUuid = 'test test test';
 
     const wrapper = shallow(Holding, {
       store,
@@ -27,10 +29,13 @@ describe('Holding.vue', () => {
       propsData: {
         name: expectedName,
         value: expectedValue,
+        location: expectedLocation,
+        uuid: expectedUuid
       },
     });
     expect(wrapper.find('[data-test-holding-name]').text()).toContain(expectedName);
     expect(wrapper.find('[data-test-holding-value]').text()).toContain('2.457');
+    expect(wrapper.find('[data-test-holding-location]').text()).toContain(expectedLocation);
   });
 
   it('Deletes the holding when the delete button is pressed', () => {

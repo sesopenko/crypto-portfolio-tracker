@@ -14,6 +14,9 @@ export default (store: any) => {
         const coinMarketCapUrl = `https://api.coinmarketcap.com/v1/ticker/${tickerName}/`;
         const corsProxyUrl = `https://cors-anywhere.herokuapp.com/${coinMarketCapUrl}`;
         fetch(coinMarketCapUrl).then((response) => {
+          if (!response.ok) {
+            return;
+          }
           response.json().then((data) => {
             const tickerData = data[0];
             const ticker = {

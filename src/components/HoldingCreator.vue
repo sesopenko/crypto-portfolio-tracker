@@ -9,6 +9,13 @@
         >
       </label>
       <label>
+        Crypto Location:
+        <input
+          v-model="location"
+          type="text"
+        >
+      </label>
+      <label>
         Crypto Value:
         <input
           v-model="value"
@@ -35,6 +42,7 @@ export default Vue.extend({
       name: '',
       value: '1',
       defaultValue: '1',
+      location: '',
     };
   },
   methods: {
@@ -43,9 +51,11 @@ export default Vue.extend({
       this.$store.dispatch('addHolding', {
         name: holdingName,
         value: parseFloat(this.value),
+        location: this.location,
       });
       this.name = '';
       this.value = this.defaultValue;
+      this.location = '';
     },
   },
 });

@@ -2,6 +2,7 @@
   <table class="c-holdings">
     <tr>
       <th class="list-header">Name</th>
+      <th class="list-header">Location</th>
       <th class="list-header">Qty</th>
       <th class="list-header">USD Value</th>
       <th class="list-header">&nbsp;</th>
@@ -11,6 +12,8 @@
       :key="index"
       :name="holding.name"
       :value="holding.value"
+      :location="holding.location"
+      :uuid="holding.uuid"
     />
   </table>
 </template>

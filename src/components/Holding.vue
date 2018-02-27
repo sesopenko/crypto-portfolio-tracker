@@ -7,6 +7,12 @@
       {{ name }}
     </td>
     <td
+      class="holding-data"
+      data-test-holding-location
+    >
+      {{ location }}
+    </td>
+    <td
       class="holding-data holding-data--monetary"
       data-test-holding-value
     >
@@ -50,6 +56,14 @@ export default Vue.extend({
       type: Number,
       required: true,
     },
+    location: {
+      type: String,
+      required: true,
+    },
+    uuid: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     ticker(): ITicker|null {
@@ -77,7 +91,7 @@ export default Vue.extend({
   },
   methods: {
     deleteHolding() {
-      this.$store.dispatch('deleteHolding', this.name);
+      this.$store.dispatch('deleteHolding', this.uuid);
     },
   },
 });
