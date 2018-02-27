@@ -27,8 +27,8 @@ export default Vue.extend({
   computed: {
     hasHoldings() {
       return this.$store.state.holdings.length > 0;
-    }
-  }
+    },
+  },
 });
 </script>
 
