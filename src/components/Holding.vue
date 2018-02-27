@@ -2,9 +2,14 @@
   <tr class="c-holding">
     <td
       class="holding-data"
-      data-test-holding-name
     >
-      {{ name }}
+      <a
+        :href="link"
+        target="_blank"
+        data-test-holding-name
+      >
+        {{ name }}
+      </a>
     </td>
     <td
       class="holding-data"
@@ -87,6 +92,9 @@ export default Vue.extend({
         });
       }
       return null;
+    },
+    link(): string {
+      return `https://coinmarketcap.com/currencies/${this.name}/`;
     },
   },
   methods: {

@@ -26,6 +26,7 @@ describe('Holding.vue', () => {
     const expectedValue = 2.457;
     const expectedLocation = 'test1';
     const expectedUuid = 'test test test';
+    const expectedHref = 'https://coinmarketcap.com/currencies/bitcoin/'
 
     const wrapper = shallow(Holding, {
       store,
@@ -38,8 +39,11 @@ describe('Holding.vue', () => {
       },
     });
     expect(wrapper.find('[data-test-holding-name]').text()).toContain(expectedName);
+    const nameAttributes = wrapper.find('[data-test-holding-name]').attributes();
+    expect(nameAttributes['href']).toContain(expectedHref);
     expect(wrapper.find('[data-test-holding-value]').text()).toContain('2.457');
     expect(wrapper.find('[data-test-holding-location]').text()).toContain(expectedLocation);
+  
   });
 
   it('Deletes the holding when the delete button is pressed', () => {
